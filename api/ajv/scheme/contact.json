@@ -1,0 +1,87 @@
+{
+	"create": {
+		"properties": {
+			"name": {
+				"type": "string"
+			},
+			"email": {
+				"type": "array",
+				"items": {
+					"type": "object",
+					"properties": {
+						"value": {
+							"type": "string"
+						},
+						"type": {
+							"type": "string"
+						}
+					},
+					"required": ["value", "type"]
+				}
+			},
+			"phone": {
+				"type": "array",
+				"items": {
+					"type": "object",
+					"properties": {
+						"value": {
+							"type": "string"
+						},
+						"type": {
+							"type": "string"
+						}
+					},
+					"required": ["value", "type"]
+				}
+			},
+			"address": {
+				"type": "array",
+				"items": {
+					"type": "object",
+					"properties": {
+						"value": {
+							"type": "string"
+						},
+						"type": {
+							"type": "string"
+						}
+					},
+					"required": ["value", "type"]
+				}
+			},
+			"photo": {
+				"type": "string"
+			},
+			"organization": {
+				"type": "string"
+			},
+			"title": {
+				"type": "string"
+			},
+			"birthday": {
+				"type": "string"
+			},
+			"url": {
+				"type": "array",
+				"items": {
+					"type": "object",
+					"properties": {
+						"value": {
+							"type": "string"
+						},
+						"type": {
+							"type": "string"
+						}
+					},
+					"required": ["value", "type"]
+				}
+			},
+			"note": {
+				"type": "string"
+			}
+		},
+		"required": [
+			"name"
+		]
+	}
+}

@@ -1,0 +1,14 @@
+{
+  "create": {
+    "properties": {
+      "fullName": { "type": "string" },
+      "email": { "type": "string" },
+      "password": { "type": "string" }
+    },
+    "required": [
+      "fullName",
+      "email",
+      "password"
+    ]
+  }
+}

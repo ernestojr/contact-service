@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Ernesto",
+    "email": [
+      { "value": "ernestorojas.dev@gmail.com", "type": "particular" },
+      { "value": "ernesto@hustling.me", "type": "work" }
+    ],
+    "phone": [
+      { "value": "+58 4249491925", "type": "cell" },
+      { "value": "+58 2869511296", "type": "home" }
+    ],
+    "address": [
+      { "value": "Guayana City, Chilemex", "type": "work" },
+      { "value": "Guayana City, Unare II", "type": "home" }
+    ],
+    "photo": "https://www.mypictures.com/ernestorojas.jpg",
+    "organization": "Hustling",
+    "title": "Software developer",
+    "birthday": "1991-03-12",
+    "url": [
+      { "value": "ernestorojas.com", "type": "perfil" },
+      { "value": "blog.ernestorojas.com", "type": "blog" }
+    ],
+    "note": "This is a note."
+  }
+]
