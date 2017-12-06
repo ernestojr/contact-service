@@ -3,7 +3,7 @@ const serviceAccount = require("./serviceAccountKey");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://contats-8f747.firebaseio.com",
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
   databaseAuthVariableOverride: {
     uid: process.env.FIREBASE_ADMIN_UID
   }
