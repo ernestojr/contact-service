@@ -4,20 +4,28 @@ const path = require('path');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
-require('./database');
-require('./firebase');
-load('../api/models');
-load('../api/services');
-load('../api/polices');
-
-const auth = require('../api/routes/auth');
-const contacts = require('../api/routes/contacts');
-
 const app = express();
+global.app = app;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+require('./log');
+require('./bootstrap');
+require('./database');
+require('./firebase');
+app.models = {};
+load('../api/models');
+app.services = {};
+load('../api/services');
+app.polices = {};
+load('../api/polices');
+app.controllers = {};
+load('../api/controllers');
+
+const auth = require('../api/routes/auth');
+const contacts = require('../api/routes/contacts');
 
 app.use('/auth', auth);
 app.use('/contacts', contacts);

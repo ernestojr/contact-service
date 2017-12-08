@@ -4,14 +4,15 @@ const messageDef = 'An error has occurred';
 const descriptionDef = 'Unknown error. Please contact the API provider for more information.';
 
 module.exports = (() => {
-  global.ErrorHandler = {
+  
+  app.services.ErrorHandler = {
     process,
   };
 
   function process(res, err) {
     const { status = statusDef, message = messageDef, description = descriptionDef, code = codeDef } = err;
     res.status(status);
-    winston.error('An error occurred', err, status);
+    app.log.error('An error occurred', err, status);
     res.json({
       code,
       description,
@@ -19,6 +20,6 @@ module.exports = (() => {
     .end();
   }
 
-  winston.info('Loaded ErrorHandler');
+  app.log.info('Loaded ErrorHandler');
 
 })();

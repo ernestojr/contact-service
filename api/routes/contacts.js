@@ -1,5 +1,6 @@
 const express = require('express');
-const ContactController = require('../controllers/ContactController')
+const { AuthPolice, ContactPolice } = app.polices;
+const { ContactController } = app.controllers;
 const router = express.Router();
 
 router.post('/', AuthPolice.bearer, ContactPolice.create, ContactController.create);

@@ -4,8 +4,6 @@ if (process.env.NODO_ENV !== 'production') require('dotenv').config();
 /**
  * Module dependencies.
  */
-require('./config/log');
-require('./config/bootstrap');
 const app = require('./config/app');
 const http = require('http');
 
@@ -69,11 +67,11 @@ function onError(error) {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      winston.error(bind + ' requires elevated privileges');
+      app.log.error(bind + ' requires elevated privileges');
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      winston.error(bind + ' is already in use');
+      app.log.error(bind + ' is already in use');
       process.exit(1);
       break;
     default:
@@ -90,5 +88,5 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  winston.info('Listening on ' + bind);
+  app.log.info('Listening on ' + bind);
 }

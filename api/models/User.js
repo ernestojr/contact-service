@@ -13,15 +13,16 @@ module.exports = (() => {
    *============================================================
    *                      LIFE CYCLE
    *============================================================
-   */
+  */
 
-   /*
+  /*
    *============================================================
    *                      INSTANCE METHODS
    *============================================================
-   */
+  */
 
   userSchema.methods.signOut = async function(token) {
+    const { Token } = app.models;
     await Token.invalidate(this._id, token);
   }
 
@@ -29,13 +30,13 @@ module.exports = (() => {
    *============================================================
    *                      STATIC METHODS
    *============================================================
-   */
+  */
 
-   userSchema.statics.getById = async function(id) {
-     const user = await this.findById(id);
-     if (!user) throw { status: 404, description: 'User not found.', message: `User ${id} not found.`, code: 'notFound' };
-     return user;
-   }
+  userSchema.statics.getById = async function(id) {
+   const user = await this.findById(id);
+   if (!user) throw { status: 404, description: 'User not found.', message: `User ${id} not found.`, code: 'notFound' };
+   return user;
+  }
 
   userSchema.statics.signIn = async function(email, password) {
     const criteria = { email, password };
@@ -49,13 +50,15 @@ module.exports = (() => {
     return await createToken(user);
   }
 
-  global.User = mongoose.model('User', userSchema);
+  app.models.User = mongoose.model('User', userSchema);
 
-  winston.info('Loaded User model');
+  app.log.info('Loaded User model');
 
 })();
 
 async function createToken(user) {
+  const { Token } = app.models;
+  const { JWTService } = app.services;
   let token;
   try {
     const criteria  = { user: user._id, status: 'on' };

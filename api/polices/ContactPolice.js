@@ -1,6 +1,7 @@
 const schemes = require('../ajv/scheme/contact');
 const _ = require('lodash');
 const AJV = require('ajv');
+const { ErrorHandler } = app.services;
 
 const invalidRequest = {
   code: 'invalidRequest',
@@ -23,7 +24,7 @@ const validFields = [
 
 module.exports = (() => {
 
-  global.ContactPolice = {
+  app.polices.ContactPolice = {
     create,
   };
 
@@ -44,6 +45,6 @@ module.exports = (() => {
     }
   }
 
-  winston.info('Loaded ContactPolice');
+  app.log.info('Loaded ContactPolice');
 
 })();

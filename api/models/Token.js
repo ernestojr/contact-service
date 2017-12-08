@@ -30,7 +30,7 @@ module.exports = (() => {
     await this.update(criteria, { $set: data })
   };
 
-  global.Token = mongoose.model('Token', tokenSchema);
+  app.models.Token = mongoose.model('Token', tokenSchema);
 
   /*
    *============================================================
@@ -40,7 +40,8 @@ module.exports = (() => {
 
   tokenSchema.post('save', async function(record, next) {
     const { _id, user } = record;
-    winston.info(`Created new token for user ${user}`);
+    const { Token } = app.models;
+    app.log.info(`Created new token for user ${user}`);
     const criteria = {
       user,
       _id: { $ne: _id },
@@ -51,5 +52,6 @@ module.exports = (() => {
     next();
   });
 
-  winston.info('Loaded Token model');
+  app.log.info('Loaded Token model');
+  
 })();

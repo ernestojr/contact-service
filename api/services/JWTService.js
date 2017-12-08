@@ -11,7 +11,7 @@ const eInvalidToken = {
 
 module.exports = (() => {
 
-  global.JWTService = {
+  app.services.JWTService = {
     generateToken,
     validateToken,
   };
@@ -30,7 +30,7 @@ module.exports = (() => {
     try {
       payload = JWT.decode(token, secretWord);
     } catch (e) {
-      winston.error('An error occurred while decode token. The token will be invalidated.', e);
+      app.log.error('An error occurred while decode token. The token will be invalidated.', e);
       await Token.invalidate(null, token);
       throw eInvalidToken;
     }
@@ -43,6 +43,6 @@ module.exports = (() => {
     return { user: payload.sub };
   }
 
-  winston.info('Loaded JWTService');
+  app.log.info('Loaded JWTService');
 
 })();

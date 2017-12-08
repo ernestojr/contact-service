@@ -1,2 +1,1 @@
-const run = process.env.NODO_ENV !== 'production' ? require('./development') : require('./production');
-module.exports = run();
+module.exports = process.env.NODO_ENV !== 'production' ? require('./development') : require('./production');

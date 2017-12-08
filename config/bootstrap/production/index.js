@@ -1,4 +1,3 @@
 module.exports = function () {
-  winston.info('Run on prduction!');
-  ff
+  app.log.info('Run on prduction!');
 }

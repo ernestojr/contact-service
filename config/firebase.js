@@ -9,8 +9,8 @@ admin.initializeApp({
   }
 });
 
-winston.info('Loaded firebase.')
+app.log.info('Loaded firebase.')
 
-global.firebase = admin;
+app.firebase = admin;
 
 module.exports = admin;

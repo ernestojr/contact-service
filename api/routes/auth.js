@@ -1,5 +1,6 @@
 const express = require('express');
-const AuthController = require('../controllers/AuthController');
+const { AuthPolice, UserPolice } = app.polices;
+const { AuthController } = app.controllers;
 const router = express.Router();
 
 router.post('/sign-in', AuthPolice.basic);
